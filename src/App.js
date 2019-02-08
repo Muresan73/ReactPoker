@@ -1,8 +1,10 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import First from "./components/first";
+import Cardpanel from "./components/cardpanel";
 
-class App extends Component {
+class App extends Component<any, any> {
   render() {
     return (
       <div className="App">
@@ -11,6 +13,7 @@ class App extends Component {
           <p>
             Edit <code>src/App.js</code> and save to reload.
           </p>
+          <Cardpanel />
           <a
             className="App-link"
             href="https://reactjs.org"

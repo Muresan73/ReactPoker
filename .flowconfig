@@ -1,0 +1,18 @@
+[ignore]
+.*/node_modules/.*
+.*/build/.*
+.*/src/serviceWorker.js
+[include]
+
+[libs]
+flow-typed
+[lints]
+
+[options]
+all=true
+module.file_ext=.js
+module.file_ext=.jsx
+module.file_ext=.json
+module.file_ext=.css
+module.name_mapper.extension='scss' -> '<PROJECT_ROOT>/SCSSFlowStub.js.flow'
+[strict]
