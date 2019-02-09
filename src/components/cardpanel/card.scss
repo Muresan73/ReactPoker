@@ -1,27 +1,30 @@
 @import "../../style.scss";
 div {
-  color: aquamarine;
-  width: 100%;
-  h1 {
-    margin-top: 0;
-    text-align: center;
-  }
-  .panel {
-    display: flex;
+    color: aquamarine;
     width: 100%;
-    justify-content: space-around;
-    .card {
-      transition: all 0.3s ease-out, border 0.1s ease-out,
-        box-shadow 0.1s ease-out;
-      &:hover {
-        position: relative;
-        transform: translate(0px, -$font-size/3) rotate(10deg);
-      }
+    h1 {
+        margin-top: 0;
+        text-align: center;
     }
-    .selected {
-      border: 3px solid greenyellow;
-      box-shadow: 0 0 0 5px greenyellow;
-      z-index: 5;
+    .panel {
+        display: flex;
+        width: 100%;
+        justify-content: start;
+        .card {
+            margin-left: -20px;
+            transition: all 0.3s ease-out, border 0.1s ease-out, box-shadow 0.1s ease-out;
+            &:hover {
+                position: relative;
+                transform: translate(0px, -$font-size/3) rotate(10deg);
+            }
+        }
+        .card:first-child {
+            margin-left: 0;
+        }
+        .selected {
+            border: 3px solid greenyellow;
+            box-shadow: 0 0 0 5px greenyellow;
+            z-index: 5;
+        }
     }
-  }
 }

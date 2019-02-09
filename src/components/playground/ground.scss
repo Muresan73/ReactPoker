@@ -7,4 +7,18 @@
   grid-gap: 20px;
   justify-content: center;
   align-content: center;
+  .nametag {
+    line-height: 20px;
+    width: 100%;
+    word-wrap: break-word;
+    font-size: $font-size/6;
+    font-stretch: 100%;
+    text-align: center;
+  }
+  @supports (font-variation-settings: "wdth" 115) {
+    .nametag {
+      font-family: Voto;
+      font-variation-settings: "wdth" 400;
+    }
+  }
 }
