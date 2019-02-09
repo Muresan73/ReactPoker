@@ -2,6 +2,7 @@
 .*/node_modules/.*
 .*/build/.*
 .*/src/serviceWorker.js
+.*/src/index.js
 [include]
 
 [libs]
