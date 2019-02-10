@@ -11,15 +11,19 @@ type State = {
 export default class Playground extends Component<Props, State> {
   state = {
     cardlist: [
-      { value: 1, name: "alma" },
-      { value: 2, name: "alma" },
-      { value: 3, name: "eseztisztahaszon" },
-      { value: 4, name: "alma" },
-      { value: 5, name: "allmlfdlkmsfdma" },
-      { value: 6, name: "alma" },
-      { value: 7, name: "alma" }
+      { value: 1, name: "almaaa" },
+      { value: 2, name: "almaaaa" },
+      { value: 3, name: "eseztiszt" },
+      { value: 4, name: "almaasdasd" },
+      { value: 5, name: "allmlfdlkmasda" },
+      { value: 6, name: "almaasdasdasdasdasd" },
+      { value: 7, name: "Kemeny Ferenc" }
     ]
   };
+
+  textMaxWidth = (text: string) =>
+    Math.pow(Math.max(...text.split(" ").map(s => s.length)), 1.4) / 50;
+
   render() {
     return (
       <div className="mainground">
@@ -29,7 +33,7 @@ export default class Playground extends Component<Props, State> {
               className="nametag"
               style={{
                 "font-variation-settings": '"wdth"' + (140 - c.name.length * 5),
-                fontSize: 20 - c.name.length / 2
+                fontSize: 2.5 - this.textMaxWidth(c.name) + "vw"
               }}
             >
               {c.name}
