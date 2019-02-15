@@ -11,7 +11,7 @@ type State = {
 
 export default class Cardpanel extends Component<Props, State> {
   state = {
-    cardlist: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 13, 20, 30],
+    cardlist: [1, 2, 3, 5, 8, 13, 21],
     selected: 0
   };
 
@@ -35,6 +35,9 @@ export default class Cardpanel extends Component<Props, State> {
               <p>{c}</p>
             </div>
           ))}
+          <div className={this.isSelected(0)}>
+            <p>?</p>
+          </div>
         </div>
       </div>
     );

@@ -1,11 +1,26 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
-import "./App.css";
+import "./App.scss";
 import Cardpanel from "./components/cardpanel/cardpanel";
 import Playground from "./components/playground/playground";
 import Sidepanel from "./components/sidepanel/sidepanel";
 
-class App extends Component<any, any> {
+type Props = {
+  className?: string
+};
+type State = {
+  isSideopen: boolean
+};
+
+class App extends Component<Props, State> {
+  state = {
+    isSideopen: false
+  };
+
+  handleMenuClick = () => {
+    this.setState({ isSideopen: !this.state.isSideopen });
+  };
+
   render() {
     return (
       <div className="App">
@@ -14,7 +29,15 @@ class App extends Component<any, any> {
           <Playground />
           <Cardpanel />
         </div>
-        <div className="side">
+        <div
+          className={
+            this.state.isSideopen ? "hamburger selectedBurger" : "hamburger"
+          }
+          onClick={this.handleMenuClick}
+        >
+          <div />
+        </div>
+        <div className={this.state.isSideopen ? "side openside" : "side"}>
           <Sidepanel />
         </div>
       </div>

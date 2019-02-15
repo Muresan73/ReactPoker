@@ -1,0 +1,112 @@
+@media screen and (max-width: 900px) {
+  .side {
+    max-width: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 10;
+  }
+  .openside {
+    max-width: 300px !important;
+  }
+  .hamburger {
+    display: block !important;
+  }
+}
+
+.App {
+  display: flex;
+  min-height: 100vh;
+  flex-wrap: wrap;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 10vmin;
+}
+
+.playarea {
+  background-color: #282c34;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  flex: 6 1 600px;
+  height: 100vh;
+  min-width: 0;
+}
+
+.side {
+  flex: 1 0 300px;
+  background: #344550;
+  transition: all 0.5s ease-out;
+}
+
+.hamburger {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 20px;
+  z-index: 11;
+  width: 50px;
+  height: 50px;
+  div,
+  div::before,
+  div::after {
+    transition: all 0.3s ease-in-out;
+    width: 50px;
+    height: 6px;
+    background: wheat;
+    border-radius: 5px;
+    display: block;
+    position: relative;
+    margin: 0 auto;
+  }
+  div {
+    top: 50%;
+    margin-top: -3px;
+    &::before {
+      content: " ";
+      top: 15px;
+    }
+    &::after {
+      content: " ";
+      top: -21px;
+    }
+  }
+}
+
+.selectedBurger {
+  div {
+    transform: rotate(135deg);
+    &::before {
+      transform: translate(0px, -15px) rotate(90deg);
+    }
+    &::after {
+      opacity: 0;
+    }
+  }
+}
+
+.hamburger:hover div,
+.hamburger:hover div::before,
+.hamburger:hover div::after {
+  background: #61dafb;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

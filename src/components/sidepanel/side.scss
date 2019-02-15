@@ -1,11 +1,12 @@
 .main {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    .tasks {
-        flex-grow: 1;
-    }
-    .controls {
-        flex: 0 0 auto;
-    }
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 250px;
+  .tasks {
+    flex-grow: 1;
+  }
+  .controls {
+    flex: 0 0 auto;
+  }
 }

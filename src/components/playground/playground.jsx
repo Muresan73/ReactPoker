@@ -16,13 +16,18 @@ export default class Playground extends Component<Props, State> {
       { value: 3, name: "eseztiszt" },
       { value: 4, name: "almaasdasd" },
       { value: 5, name: "allmlfdlkmasda" },
-      { value: 6, name: "almaasdasdasdasdasd" },
-      { value: 7, name: "Kemeny Ferenc" }
+      { value: 6, name: "almaasdasdasd" },
+      { value: 2, name: "almaaaa" },
+      { value: 3, name: "eseztiszt" },
+      { value: 4, name: "almaasdasd" },
+      { value: 5, name: "allmlfdlkmasda" },
+      { value: 6, name: "almaasdasda" },
+      { value: 3, name: "eseztiszt" }
     ]
   };
 
-  textMaxWidth = (text: string) =>
-    Math.pow(Math.max(...text.split(" ").map(s => s.length)), 1.4) / 50;
+  textMaxWidth = (text: string) => 0.6;
+  // Math.pow(Math.max(...text.split(" ").map(s => s.length)), 1.4) / 50;
 
   render() {
     return (

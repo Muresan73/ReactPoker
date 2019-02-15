@@ -30,7 +30,7 @@
     "babel-preset-flow": "^6.23.0",
     "flow-bin": "^0.92.1",
     "flow-typed": "^2.5.1",
-    "jest": "^20.0.4",
-    "jest-cli": "^20.0.4"
+    "jest": "^23.6.0",
+    "jest-cli": "^23.6.0"
   }
 }
