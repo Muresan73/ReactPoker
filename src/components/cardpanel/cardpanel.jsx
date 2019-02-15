@@ -35,7 +35,7 @@ export default class Cardpanel extends Component<Props, State> {
               <p>{c}</p>
             </div>
           ))}
-          <div className={this.isSelected(0)}>
+          <div className={this.isSelected(0)} onClick={this.handleSelection(0)}>
             <p>?</p>
           </div>
         </div>
