@@ -1,12 +1,13 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
+import logo from "../../logo.svg";
 import "./App.scss";
-import Cardpanel from "./components/cardpanel/cardpanel";
-import Playground from "./components/playground/playground";
-import Sidepanel from "./components/sidepanel/sidepanel";
+import Cardpanel from "../cardpanel/cardpanel";
+import Playground from "../playground/playground";
+import Sidepanel from "../sidepanel/sidepanel";
 
 type Props = {
-  className?: string
+  className?: string,
+  match: any
 };
 type State = {
   isSideopen: boolean
@@ -25,6 +26,7 @@ class App extends Component<Props, State> {
     return (
       <div className="App">
         <div className="playarea">
+          {this.props.match.params.id}
           <img src={logo} className="App-logo" alt="logo" />
           <Playground />
           <Cardpanel />

@@ -12,7 +12,7 @@ type State = {
 export default class Cardpanel extends Component<Props, State> {
   state = {
     cardlist: [1, 2, 3, 5, 8, 13, 21],
-    selected: 0
+    selected: -1
   };
 
   handleSelection = (n: number) => () => {

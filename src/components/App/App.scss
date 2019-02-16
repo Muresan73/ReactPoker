@@ -6,6 +6,7 @@
     bottom: 0;
     right: 0;
     z-index: 10;
+    overflow: hidden;
   }
   .openside {
     max-width: 300px !important;
@@ -17,7 +18,7 @@
 
 .App {
   display: flex;
-  min-height: 100vh;
+  height: 100%;
   flex-wrap: wrap;
 }
 
@@ -58,7 +59,8 @@
   div::before,
   div::after {
     // transition: top 0.5s, transform 0.5s ease-in-out, opacity 0.5s 0.5s;
-    transition: top 0.5s 0.5s, transform 0.5s ease-in-out, opacity 0.5s;
+    transition: top 0.2s 0.4s, transform 0.4s ease-in-out, opacity 0.4s,
+      background 0.3s;
     width: 50px;
     height: 6px;
     background: wheat;
@@ -90,14 +92,15 @@
 .selectedBurger {
   div {
     // transition: top 0.5s, transform 0.5s 0.5s ease-in-out, opacity 0.5s 0.5s;
-    // transition: top 0.5s, transform 0.5s 0.5s ease-in-out, opacity 0.5s 0.5s;
+    transition: transform 0.4s 0.1s ease-in-out, background 0.3s;
     transform: rotate(135deg);
     &::before {
+      transition: top 0.2s, transform 0.4s 0.2s ease-in-out;
       transform: rotate(90deg);
       top: 0;
     }
     &::after {
-      opacity: 0;
+      transition: top 0.2s, opacity 0.3s 0.2s;
       top: -6px;
     }
   }
