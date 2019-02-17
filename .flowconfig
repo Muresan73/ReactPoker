@@ -3,6 +3,7 @@
 .*/build/.*
 .*/src/serviceWorker.js
 .*/src/index.js
+.*/server.js
 [include]
 
 [libs]
