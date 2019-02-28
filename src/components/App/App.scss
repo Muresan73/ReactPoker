@@ -1,120 +1,119 @@
 @media screen and (max-width: 900px) {
-  .side {
-    max-width: 0;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    z-index: 10;
-    overflow: hidden;
-  }
-  .openside {
-    max-width: 300px !important;
-  }
-  .hamburger {
-    display: block !important;
-  }
+    .side {
+        max-width: 0;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 10;
+        overflow: hidden;
+    }
+    .openside {
+        max-width: 300px !important;
+    }
+    .hamburger {
+        display: block !important;
+    }
 }
 
 .App {
-  display: flex;
-  height: 100%;
-  flex-wrap: wrap;
+    display: flex;
+    height: 100%;
+    flex-wrap: wrap;
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 10vmin;
+    animation: App-logo-spin infinite 20s linear;
+    height: 10vmin;
 }
 
 .playarea {
-  background-color: #282c34;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  font-size: calc(10px + 2vmin);
-  color: white;
-  flex: 6 1 600px;
-  height: 100vh;
-  min-width: 0;
+    background-color: #282c34;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: calc(10px + 2vmin);
+    color: white;
+    flex: 6 1 600px;
+    height: 100vh;
+    min-width: 0;
 }
 
 .side {
-  flex: 1 0 300px;
-  background: #344550;
-  transition: all 0.5s ease-out;
+    flex: 1 0 300px;
+    background: #344550;
+    transition: all 0.5s ease-out;
 }
 
 .hamburger {
-  display: none;
-  position: absolute;
-  right: 0;
-  top: 0;
-  margin: 20px;
-  z-index: 11;
-  width: 50px;
-  height: 50px;
-  div,
-  div::before,
-  div::after {
-    // transition: top 0.5s, transform 0.5s ease-in-out, opacity 0.5s 0.5s;
-    transition: top 0.2s 0.4s, transform 0.4s ease-in-out, opacity 0.4s,
-      background 0.3s;
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 20px;
+    z-index: 11;
     width: 50px;
-    height: 6px;
-    background: wheat;
-    border-radius: 5px;
-    display: block;
-    position: relative;
-    margin: 0 auto;
-  }
-  div {
-    top: 50%;
-    margin-top: -3px;
-    &::before {
-      content: " ";
-      top: 15px;
+    height: 50px;
+    div,
+    div::before,
+    div::after {
+        // transition: top 0.5s, transform 0.5s ease-in-out, opacity 0.5s 0.5s;
+        transition: top 0.2s 0.4s, transform 0.4s ease-in-out, opacity 0.4s, background 0.3s;
+        width: 50px;
+        height: 6px;
+        background: wheat;
+        border-radius: 5px;
+        display: block;
+        position: relative;
+        margin: 0 auto;
     }
-    &::after {
-      content: " ";
-      top: -21px;
+    div {
+        top: 50%;
+        margin-top: -3px;
+        &::before {
+            content: " ";
+            top: 15px;
+        }
+        &::after {
+            content: " ";
+            top: -21px;
+        }
     }
-  }
 }
 
 .hamburger:hover div,
 .hamburger:hover div::before,
 .hamburger:hover div::after {
-  background: #61dafb;
+    background: #61dafb;
 }
 
 .selectedBurger {
-  div {
-    // transition: top 0.5s, transform 0.5s 0.5s ease-in-out, opacity 0.5s 0.5s;
-    transition: transform 0.4s 0.1s ease-in-out, background 0.3s;
-    transform: rotate(135deg);
-    &::before {
-      transition: top 0.2s, transform 0.4s 0.2s ease-in-out;
-      transform: rotate(90deg);
-      top: 0;
+    div {
+        // transition: top 0.5s, transform 0.5s 0.5s ease-in-out, opacity 0.5s 0.5s;
+        transition: transform 0.4s 0.1s ease-in-out, background 0.3s;
+        transform: rotate(135deg);
+        &::before {
+            transition: top 0.2s, transform 0.4s 0.2s ease-in-out;
+            transform: rotate(90deg);
+            top: 0;
+        }
+        &::after {
+            transition: top 0.2s, opacity 0.3s 0.2s;
+            top: -6px;
+        }
     }
-    &::after {
-      transition: top 0.2s, opacity 0.3s 0.2s;
-      top: -6px;
-    }
-  }
 }
 
 .App-link {
-  color: #61dafb;
+    color: #61dafb;
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }

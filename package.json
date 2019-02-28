@@ -4,11 +4,12 @@
   "private": true,
   "proxy": "http://localhost:8080/",
   "dependencies": {
+    "@babel/preset-env": "^7.3.1",
     "axios": "^0.18.0",
     "express": "^4.16.4",
     "node-sass": "^4.11.0",
-    "react": "^16.8.2",
-    "react-dom": "^16.8.2",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
     "react-router-dom": "^4.3.1",
     "react-scripts": "^2.1.5"
   },
@@ -19,7 +20,8 @@
     "eject": "react-scripts eject",
     "babuild": "babel src/ -d lib/",
     "flow": "flow",
-    "flow-typed": "flow-typed"
+    "flow-typed": "flow-typed",
+    "jest": "jest"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -31,11 +33,14 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@babel/preset-flow": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel": "^6.23.0",
     "babel-cli": "^6.26.0",
     "babel-preset-flow": "^6.23.0",
     "flow-bin": "^0.92.1",
     "flow-typed": "^2.5.1",
-    "jest": "23.6.0",
+    "jest": "^23.6.0",
     "jest-cli": "^24.1.0"
   }
 }

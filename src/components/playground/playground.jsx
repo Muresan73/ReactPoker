@@ -31,23 +31,33 @@ export default class Playground extends Component<Props, State> {
 
   render() {
     return (
-      <div className="mainground">
-        {this.state.cardlist.map((c, i) => (
-          <div key={i}>
-            <div
-              className="nametag"
-              style={{
-                "font-variation-settings": '"wdth"' + (140 - c.name.length * 5),
-                fontSize: 2.5 - this.textMaxWidth(c.name) + "vw"
-              }}
-            >
-              {c.name}
+      <div className="gridContainer">
+        <div className="maingroundgrid">
+          {this.state.cardlist.map((c, i) => (
+            <div key={i}>
+              <div className="nametag">
+                <svg viewBox="0 0 60 20">
+                  <text
+                    x="30"
+                    y="20"
+                    text-anchor="middle"
+                    textLength="60"
+                    lengthAdjust="spacingAndGlyphs"
+                  >
+                    {c.name}
+                  </text>
+                </svg>
+              </div>
+              <div className="card">
+                <svg viewBox="0 0 30 40">
+                  <text x="15" y="30" text-anchor="middle">
+                    {c.value}
+                  </text>
+                </svg>
+              </div>
             </div>
-            <div className="card">
-              <p>{c.value}</p>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     );
   }
