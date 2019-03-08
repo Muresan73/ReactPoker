@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import "./card.scss";
+import React, { Component } from 'react';
+import './card.scss';
 
 type Props = {
   className?: string
@@ -11,30 +11,31 @@ type State = {
 
 export default class Cardpanel extends Component<Props, State> {
   state = {
-    cardlist: ["1", "2", "3", "5", "8", "13", "21", "?"],
-    selected: "-1"
+    cardlist: ['1', '2', '3', '5', '8', '13', '21', '?', 'PASS'],
+    selected: '-1'
   };
 
   handleSelection = (n: string) => () => {
     this.setState({ selected: n });
   };
-  isSelected = (n: string) =>
-    n === this.state.selected ? "card selected" : "card";
+  isSelected = (n: string) => (n === this.state.selected ? 'card selected' : 'card');
 
   render() {
     return (
       <div>
         <h1>Select a Card</h1>
         <div className="panel">
-          {this.state.cardlist.map(c => (
-            <div className="cardHolder">
-              <div
-                key={c}
-                onClick={this.handleSelection(c)}
-                className={this.isSelected(c)}
-              >
+          {this.state.cardlist.map((c, i) => (
+            <div key={i} className="cardHolder">
+              <div onClick={this.handleSelection(c)} className={this.isSelected(c)}>
                 <svg viewBox="0 0 30 50" width="100%">
-                  <text x="15" y="35" text-anchor="middle">
+                  <text
+                    x="15"
+                    y="35"
+                    textAnchor="middle"
+                    textLength={c.length < 3 ? '' : '30'}
+                    lengthAdjust="spacingAndGlyphs"
+                  >
                     {c}
                   </text>
                 </svg>

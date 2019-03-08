@@ -1,4 +1,4 @@
-@import "../../style.scss";
+@import '../../style.scss';
 div {
   color: aquamarine;
   width: 100%;
@@ -11,9 +11,9 @@ div {
     width: 100%;
     justify-content: space-around;
     .cardHolder {
+      max-width: 75px;
       .card {
-        transition: all 0.3s ease-out, border 0.1s ease-out,
-          box-shadow 0.1s ease-out;
+        transition: all 0.3s ease-out, border 0.1s ease-out, box-shadow 0.1s ease-out;
       }
       &:hover .card {
         position: relative;

@@ -1,22 +1,19 @@
-@import "../../style.scss";
+@import '../../style.scss';
 
 .gridContainer {
   padding: 0 7vw;
   overflow: auto;
   box-sizing: border-box;
-  justify-content: center;
-  align-content: center;
-  align-items: end;
-  grid-auto-rows: auto;
   flex: 1;
   display: flex;
-  align-items: center;
   .maingroundgrid {
     height: 100%;
     grid-auto-flow: dense;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(calc(80px + 2vw), 1fr));
     grid-gap: 20px;
+    justify-content: center;
+    align-items: flex-end;
     .nametag {
       line-height: 20px;
       width: 100%;
@@ -26,10 +23,18 @@
       text-align: center;
       word-wrap: normal;
     }
-    @supports (font-variation-settings: "wdth"115) {
+    .card {
+      max-width: 50px;
+    }
+    svg {
+      fill: cadetblue;
+      // -webkit-filter: drop-shadow(12px 12px 7px rgba(0, 0, 0, 0.5));
+      // filter: drop-shadow(12px 12px 7px rgba(0, 0, 0, 0.5));
+    }
+    @supports (font-variation-settings: 'wdth' 115) {
       .nametag {
         font-family: Voto;
-        font-variation-settings: "wdth"400;
+        font-variation-settings: 'wdth' 400;
       }
     }
   }
