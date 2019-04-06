@@ -1,19 +1,27 @@
 import React, { Component } from 'react';
 import './card.scss';
+import SocketContext from './../App/socket-context';
 
 type Props = {
   className?: string
 };
 type State = {
   cardlist: string[],
-  selected: string
+  selected: string,
+  socket: io.SocketIOClient.Socket
 };
 
 export default class Cardpanel extends Component<Props, State> {
+  static contextType = SocketContext;
   state = {
     cardlist: ['1', '2', '3', '5', '8', '13', '21', '?', 'PASS'],
-    selected: '-1'
+    selected: '-1',
+    socket: this.context
   };
+  componentDidMount() {
+    const socket = this.state.socket;
+    socket.emit('greet', { message: 'Hello, I am cardpanel!' });
+  }
 
   handleSelection = (n: string) => () => {
     this.setState({ selected: n });
@@ -33,7 +41,7 @@ export default class Cardpanel extends Component<Props, State> {
                     x="15"
                     y="35"
                     textAnchor="middle"
-                    textLength={c.length < 3 ? '' : '30'}
+                    textLength={c.length < 3 ? '0' : '30'}
                     lengthAdjust="spacingAndGlyphs"
                   >
                     {c}
