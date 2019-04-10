@@ -45,6 +45,7 @@
     "flow-typed": "^2.5.1",
     "jest": "^23.6.0",
     "jest-cli": "^24.1.0",
+    "mini-css-extract-plugin": "^0.6.0",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0"
   }
