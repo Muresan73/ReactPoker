@@ -43,10 +43,13 @@
     "@babel/preset-react": "^7.0.0",
     "flow-bin": "^0.92.1",
     "flow-typed": "^2.5.1",
+    "gulp": "^4.0.0",
+    "gulp-babel": "^8.0.0",
     "jest": "^23.6.0",
     "jest-cli": "^24.1.0",
     "mini-css-extract-plugin": "^0.6.0",
     "webpack": "^4.29.6",
-    "webpack-cli": "^3.3.0"
+    "webpack-cli": "^3.3.0",
+    "webpack-stream": "^5.2.1"
   }
 }
