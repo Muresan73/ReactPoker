@@ -25,6 +25,11 @@ app.get('/session', function(req, res) {
   res.send('dikk');
 });
 
+app.get('/currentPlayers', function(req, res) {
+  const room = req.query.room;
+  res.send(Array.from(store.rooms[room]));
+});
+
 app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
@@ -43,8 +48,7 @@ io.on('connection', socket => {
     if (store.rooms[room]) {
       console.log(Array.from(store.rooms[room]));
       // socket.emit('CurrentPlayersInRoom', Array.from(store.rooms[room]));
-      socket.emit('usrlist', { as: 'alma' });
-      socket.emit('broadcast', Array.from(store.rooms[room]));
+      // socket.emit('usrlist', Array.from(store.rooms[room]));
     }
     store.addUser2Room(client.name, room);
 

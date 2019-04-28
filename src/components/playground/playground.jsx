@@ -1,9 +1,12 @@
 import React, { useEffect, useContext, useState } from 'react';
 import './ground.scss';
 import SocketContext from './../App/socket-context';
+import axios from 'axios';
 
 type Props = {
-  className?: string
+  className?: string,
+  room: String,
+  currentUser: String
 };
 
 export default function Playground(props: Props) {
@@ -40,17 +43,30 @@ export default function Playground(props: Props) {
           : players.concat([{ name: msg.User, value: msg.Card }])
       );
     });
-    socket.on('broadcast', (userList: string[]) => {
-      console.log(userList);
 
+    const mergeNewPlayers = userList =>
       setplayerList(players => {
         console.log(userList);
         return players.concat(
           userList.filter(user => !players.includes(user)).map(user => ({ name: user, value: '0' }))
         );
       });
+    socket.on('usrlist', (userList: string[]) => {
+      console.log(userList);
+      mergeNewPlayers(userList);
     });
     socket.on('Flip', flipstate => setFlipState(flipstate));
+    axios
+      .get('/currentPlayers', {
+        params: {
+          room: props.room
+        }
+      })
+      .then(res => {
+        const userList = res.data.filter(u => u !== props.currentUser);
+
+        mergeNewPlayers(userList);
+      });
   }, []);
 
   // const textMaxWidth = (text: string) => 0.6;

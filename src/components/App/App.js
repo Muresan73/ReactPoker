@@ -53,7 +53,7 @@ class App extends Component<Props, State> {
             {this.props.query}
             {parse(this.props.location.search).name}
             <img src={logo} className="App-logo" alt="logo" />
-            <Playground />
+            <Playground room={this.props.query} currentUser={this.state.currentUser} />
             <Cardpanel currentUser={this.state.currentUser} />
           </div>
           <div
