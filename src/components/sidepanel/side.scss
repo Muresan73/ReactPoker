@@ -10,5 +10,25 @@
 
   .controls {
     flex: 0 0 auto;
+    .buttons {
+      display: flex;
+      button {
+        height: 50px;
+        background: lightskyblue;
+        flex: 1 1 0;
+        margin: 20px;
+        border-radius: 50px;
+        border: 0;
+        box-shadow: 0 0 10px lightskyblue;
+        &[task='hide']:hover {
+          background: tomato;
+          box-shadow: 0 0 10px tomato;
+        }
+        &:hover {
+          background: lightgreen;
+          box-shadow: 0 0 10px lightgreen;
+        }
+      }
+    }
   }
 }

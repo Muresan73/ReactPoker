@@ -1,15 +1,13 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import App from "./components/App/App";
-import HomePage from "./components/Home/home";
+import React from 'react';
+import { Router, Link } from '@reach/router';
+import App from './components/App/App';
+import HomePage from './components/Home/home';
 
 // eslint-disable-next-line no-unused-vars
-const AppRouter = () => (
+const AppRouter = props => (
   <Router>
-    <Switch>
-      <Route path="/:id" component={App} />
-      <Route path="/" component={HomePage} />
-    </Switch>
+    <App path=":query" query="query" p={props} />
+    <HomePage path="/" />
   </Router>
 );
 

@@ -42,7 +42,13 @@ io.on('connection', socket => {
       socket.to(room).emit('bye', client.name);
     });
   });
-  socket.emit('WellcomeIam', name => socket.to(room).emit('WellcomeIam', name));
+  // socket.on('WellcomeIam', name => socket.to(room).emit('WellcomeIam', name));
+  socket.on('Flip', state => {
+    console.log(state);
+    console.log(room);
+
+    io.in(room).emit('Flip', state);
+  });
 
   // socket.on('disconnect', () => {
   //   console.log('user disconnected');

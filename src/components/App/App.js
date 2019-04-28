@@ -6,6 +6,7 @@ import Playground from '../playground/playground';
 import Sidepanel from '../sidepanel/sidepanel';
 import io from 'socket.io-client';
 import SocketContext from './socket-context';
+import { parse } from 'query-string';
 
 type Props = {
   className?: string,
@@ -19,8 +20,8 @@ type State = {
 class App extends Component<Props, State> {
   state = {
     isSideopen: false,
-    socket: io('', { query: { room: '11' } }),
-    currentUser: 'Aladár'
+    socket: io('', { query: { room: this.props.query } }),
+    currentUser: parse(this.props.location.search).name || 'Aladár'
   };
 
   componentDidMount() {
@@ -46,7 +47,8 @@ class App extends Component<Props, State> {
       <SocketContext.Provider value={this.state.socket}>
         <div className="App">
           <div className="playarea">
-            {this.props.match.params.id}
+            {this.props.query}
+            {parse(this.props.location.search).name}
             <img src={logo} className="App-logo" alt="logo" />
             <Playground />
             <Cardpanel currentUser={this.state.currentUser} />

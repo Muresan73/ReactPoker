@@ -21,21 +21,27 @@ export default function Playground(props: Props) {
     { value: '6', name: 'almaasdasda' },
     { value: '3', name: 'asds' }
   ]);
+  const [isFlip, setFlipState] = useState(false);
+
   const socket = useContext(SocketContext);
 
   useEffect(() => {
     const addUser = (msg: { message: String, name: String }) =>
-      msg.name && setplayerList(playerList.concat([{ name: msg.name, value: '0' }]));
+      setplayerList(pl => (!pl.map(p => p.name).includes(msg.name) ? pl.concat([{ name: msg.name, value: '0' }]) : pl));
     socket.on('Greet', addUser);
-    socket.on('WellcomeIam', addUser);
-    socket.on('WellcomeIam', m => console.log(m));
-    socket.on('bye', name => setplayerList(playerList.filter(player => player.name !== name)));
+    // socket.on('WellcomeIam', addUser);
+    // socket.on('WellcomeIam', m => console.log(m));
+    // socket.on('bye', name => setplayerList(playerList.filter(player => player.name !== name)));
 
     socket.on('cardSelected', (msg: { User: String, Card: String }) => {
       setplayerList(players =>
-        players.map(({ value, name }) => (name === msg.User ? { name, value: msg.Card } : { name, value }))
+        players.map(p => p.name).includes(msg.User)
+          ? players.map(({ value, name }) => (name === msg.User ? { name, value: msg.Card } : { name, value }))
+          : players.concat([{ name: msg.User, value: msg.Card }])
       );
     });
+
+    socket.on('Flip', flipstate => setFlipState(flipstate));
   }, []);
 
   // const textMaxWidth = (text: string) => 0.6;
@@ -64,7 +70,7 @@ export default function Playground(props: Props) {
                   textLength="30"
                   lengthAdjust={c.value.length < 3 ? 'spacing' : 'spacingAndGlyphs'}
                 >
-                  {c.value}
+                  {isFlip && c.value}
                 </text>
               </svg>
             </div>

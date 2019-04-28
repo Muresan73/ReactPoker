@@ -17,8 +17,8 @@ export default class Sidepanel extends Component<Props, State> {
     socket: this.context
   };
 
-  handleButtonClick = (text: string) => () => {
-    this.state.socket.emit('greet', { message: text });
+  handleFlipButtonClick = (state: Boolean) => () => {
+    this.state.socket.emit('Flip', state);
   };
   render() {
     return (
@@ -33,8 +33,14 @@ export default class Sidepanel extends Component<Props, State> {
         </div>
         <div className="controls">
           <h1>Controls:</h1>
-
-          <button onClick={this.handleButtonClick('helokanyaloka')}>habala</button>
+          <div className="buttons">
+            <button onClick={this.handleFlipButtonClick(false)} task="hide">
+              HIDE
+            </button>
+            <button onClick={this.handleFlipButtonClick(true)} task="reveal">
+              REVEAL
+            </button>
+          </div>
         </div>
       </div>
     );
