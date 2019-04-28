@@ -35,6 +35,9 @@ class App extends Component<Props, State> {
     socket.on('broadcast', msg => {
       console.log(msg);
     });
+    socket.on('usrlist', msg => {
+      console.log(msg);
+    });
     // socket.on('Greet', name => socket.emit('WellcomeIam', currentUser));
     // socket.on('Greet', name => console.log(name));
   }

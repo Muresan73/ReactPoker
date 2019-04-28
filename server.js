@@ -7,6 +7,14 @@ app.use(express.static(path.join(__dirname, 'build')));
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
+const store = {
+  rooms: {},
+  addUser2Room: (username, room) =>
+    store.rooms[room] ? store.rooms[room].add(username) : (store.rooms[room] = new Set([username])),
+  removeUserFromRoom: (username, room) =>
+    store.rooms[room].length > 1 ? store.rooms[room].delete(username) : delete store.rooms[room]
+};
+
 app.get('/ping', function(req, res) {
   console.log('lenni');
 
@@ -17,7 +25,7 @@ app.get('/session', function(req, res) {
   res.send('dikk');
 });
 
-app.get('/', function(req, res) {
+app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
@@ -32,6 +40,14 @@ io.on('connection', socket => {
   socket.on('Greet', (client, id) => {
     socket.to(room).emit('Greet', client);
 
+    if (store.rooms[room]) {
+      console.log(Array.from(store.rooms[room]));
+      // socket.emit('CurrentPlayersInRoom', Array.from(store.rooms[room]));
+      socket.emit('usrlist', { as: 'alma' });
+      socket.emit('broadcast', Array.from(store.rooms[room]));
+    }
+    store.addUser2Room(client.name, room);
+
     socket.on('cardSelected', message => {
       console.log(message);
       socket.to(room).emit('cardSelected', message);
@@ -40,6 +56,8 @@ io.on('connection', socket => {
     socket.on('disconnect', () => {
       console.log(client.name + ' disconnected');
       socket.to(room).emit('bye', client.name);
+      // store.removeUserFromRoom(client.name, room);
+      console.log(store.rooms);
     });
   });
   // socket.on('WellcomeIam', name => socket.to(room).emit('WellcomeIam', name));

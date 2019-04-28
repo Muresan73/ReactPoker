@@ -40,7 +40,16 @@ export default function Playground(props: Props) {
           : players.concat([{ name: msg.User, value: msg.Card }])
       );
     });
+    socket.on('broadcast', (userList: string[]) => {
+      console.log(userList);
 
+      setplayerList(players => {
+        console.log(userList);
+        return players.concat(
+          userList.filter(user => !players.includes(user)).map(user => ({ name: user, value: '0' }))
+        );
+      });
+    });
     socket.on('Flip', flipstate => setFlipState(flipstate));
   }, []);
 
