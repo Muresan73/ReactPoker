@@ -22,20 +22,31 @@ app.get('/', function(req, res) {
 });
 
 io.on('connection', socket => {
-  socket.join(socket.handshake.query.room);
-  console.log('connected to room:' + socket.handshake.query.room);
+  const room = socket.handshake.query.room;
+  socket.join(room);
+  console.log('connected to room:' + room);
 
   console.log('User connected');
   socket.broadcast.emit('broadcast', 'somebody joined the connection');
 
-  socket.on('greet', client => {
-    socket.to('11').emit('greet', client);
-    console.log(client);
-  });
+  socket.on('Greet', (client, id) => {
+    socket.to(room).emit('Greet', client);
 
-  socket.on('disconnect', () => {
-    console.log('user disconnected');
+    socket.on('cardSelected', message => {
+      console.log(message);
+      socket.to(room).emit('cardSelected', message);
+    });
+
+    socket.on('disconnect', () => {
+      console.log(client.name + ' disconnected');
+      socket.to(room).emit('bye', client.name);
+    });
   });
+  socket.emit('WellcomeIam', name => socket.to(room).emit('WellcomeIam', name));
+
+  // socket.on('disconnect', () => {
+  //   console.log('user disconnected');
+  // });
 });
 
 server.listen(process.env.PORT || 8080);

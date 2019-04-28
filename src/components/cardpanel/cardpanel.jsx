@@ -1,9 +1,10 @@
-import React, { useEffect, useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './card.scss';
 import SocketContext from './../App/socket-context';
 
 type Props = {
-  className?: string
+  className?: string,
+  currentUser: string
 };
 
 export default function Cardpanel(props: Props) {
@@ -12,12 +13,9 @@ export default function Cardpanel(props: Props) {
 
   const socket = useContext(SocketContext);
 
-  useEffect(() => {
-    socket.emit('greet', { message: 'Hello, I am cardpanel!' });
-  }, []);
-
   const handleSelection = (n: string) => () => {
     setSelected(n);
+    socket.emit('cardSelected', { User: props.currentUser, Card: n });
   };
   return (
     <div>

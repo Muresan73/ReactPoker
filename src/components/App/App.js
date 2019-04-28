@@ -19,25 +19,23 @@ type State = {
 class App extends Component<Props, State> {
   state = {
     isSideopen: false,
-    socket: io('', { query: { room: '11' } })
+    socket: io('', { query: { room: '11' } }),
+    currentUser: 'Aladár'
   };
 
   componentDidMount() {
     const socket = this.state.socket;
+    const currentUser = this.state.currentUser;
+
     socket.on('connect', function() {
       console.log('connected!');
-      socket.emit('greet', { message: 'Hello Everyone!' });
+      socket.emit('Greet', { message: 'Hello Everyone!', name: currentUser });
     });
     socket.on('broadcast', msg => {
       console.log(msg);
     });
-    socket.on('reconnect_attempt', () => {});
-
-    socket.on('greet', info => {
-      console.log(info);
-    });
-
-    socket.emit('greet', { message: 'Hello Hali!' });
+    // socket.on('Greet', name => socket.emit('WellcomeIam', currentUser));
+    // socket.on('Greet', name => console.log(name));
   }
   handleMenuClick = () => {
     this.setState({ isSideopen: !this.state.isSideopen });
@@ -51,7 +49,7 @@ class App extends Component<Props, State> {
             {this.props.match.params.id}
             <img src={logo} className="App-logo" alt="logo" />
             <Playground />
-            <Cardpanel />
+            <Cardpanel currentUser={this.state.currentUser} />
           </div>
           <div
             className={this.state.isSideopen ? 'hamburger selectedBurger' : 'hamburger'}
